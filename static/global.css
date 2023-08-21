@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700');
+
+:root {
+	/* Reusing acmcsuf.com custom properties */
+	--acm-dark: #101315;
+	--acm-light: #f8f8f8;
+	--acm-canvas: #eaeaea;
+	--acm-general-rgb: 5, 163, 255;
+
+	--size-xxl: clamp(2.8125rem, 1.8403rem + 5.5556vw, 5.3125rem);
+	--size-xl: clamp(2rem, 1.7545rem + 1.0909vw, 3.5rem);
+	--size-lg: clamp(1.5rem, 1.3773rem + 0.5455vw, 2.25rem);
+	--size-md: clamp(1.125rem, 1.0636rem + 0.2727vw, 1.5rem);
+	--size-sm: clamp(1rem, 0.9795rem + 0.0909vw, 1.125rem);
+	--size-xs: clamp(0.75rem, 0.7295rem + 0.0909vw, 0.875rem);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	font-family: 'Poppins', 'Verdana', 'Helvetica', sans-serif;
+}
+
+html,
+body {
+	color: var(--acm-dark);
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2 {
+	font-weight: 600;
+}
