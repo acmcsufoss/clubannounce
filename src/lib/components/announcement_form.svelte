@@ -1,0 +1,79 @@
+<script lang="ts">
+	let startDate: Date;
+</script>
+
+<form class="announcement-card">
+	<h2>Create a New Event</h2>
+	<div class="column">
+		<label for="start-time">Start Date</label>
+		<input name="start-time" type="date" bind:value={startDate} />
+
+		<label for="start-time">Start Date</label>
+		<input name="start-time" type="date" bind:value={startDate} />
+	</div>
+	<div class="column">
+		<label for="start-time">Start Date</label>
+		<input name="start-time" type="date" bind:value={startDate} />
+
+		<label for="start-time">Start Date</label>
+		<input name="start-time" type="date" bind:value={startDate} />
+	</div>
+	<div class="column col-right">
+		<button class="save-event" type="submit">Save</button>
+		<button class="create-event" type="submit">Create</button>
+	</div>
+</form>
+
+<style lang="scss">
+	.announcement-card {
+		position: fixed;
+		left: 50%;
+		transform: translate(-50%, 0);
+		display: flex;
+		flex-direction: column;
+		padding: 2rem;
+		background-color: var(--acm-light);
+
+		& .column {
+			margin-block-end: 2rem;
+			&.col-right {
+				justify-self: end;
+			}
+		}
+
+		& h2 {
+			margin-block: 0;
+			margin-block-end: 2rem;
+		}
+
+		& input[type='date'] {
+			background-color: var(--acm-canvas);
+			font-size: 1rem;
+			padding: 1rem;
+			outline: none;
+			border: none;
+			text-align: right;
+		}
+
+		.save-event,
+		.create-event {
+			outline: none;
+			border: none;
+			cursor: pointer;
+			font-size: 1rem;
+			border-radius: 0.5rem;
+		}
+
+		.save-event {
+			padding: 0.75rem;
+			background-color: transparent;
+			color: rgb(var(--acm-general-rgb));
+		}
+
+		.create-event {
+			padding: 0.75rem 1.5rem;
+			background-color: rgb(var(--acm-general-rgb));
+			color: var(--acm-light);
+		}
+	}
+</style>
