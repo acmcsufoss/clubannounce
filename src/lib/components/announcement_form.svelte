@@ -8,10 +8,13 @@
 	 * Render the card instead of the HTML form.
 	 */
 	export let readonly = false;
+	const CHAR_LIMIT = 2000;
 
 	let title = '';
 	let content = '';
 	let startDate: Date;
+
+	$: characterCount = title.length + content.length;
 </script>
 
 <form class="announcement-card">
@@ -22,12 +25,16 @@
 	</div>
 
 	<div class="column">
-		<textarea name="content" bind:value={content} />
+		<textarea name="content" bind:value={content} placeholder="Start typing here..." />
 	</div>
 
 	<div class="column col-right">
-		<button class="save-event" type="submit">Save</button>
-		<button class="create-event" type="submit">Create</button>
+		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/2000 characters
+	</div>
+
+	<div class="column col-right">
+		<button class="save" type="submit">Save</button>
+		<button class="create" type="submit">Create</button>
 	</div>
 </form>
 
@@ -55,15 +62,6 @@
 			margin-block-end: 1rem;
 		}
 
-		& input[type='date'] {
-			background-color: var(--acm-canvas);
-			font-size: 1rem;
-			padding: 1rem;
-			outline: none;
-			border: none;
-			text-align: right;
-		}
-
 		& textarea {
 			width: 100%;
 			height: 10rem;
@@ -81,8 +79,8 @@
 			// text-align: left;
 		}
 
-		.save-event,
-		.create-event {
+		.save,
+		.create {
 			outline: none;
 			border: none;
 			cursor: pointer;
@@ -90,13 +88,13 @@
 			border-radius: 0.5rem;
 		}
 
-		.save-event {
+		.save {
 			padding: 0.75rem;
 			background-color: transparent;
 			color: rgb(var(--acm-general-rgb));
 		}
 
-		.create-event {
+		.create {
 			padding: 0.75rem 1.5rem;
 			background-color: rgb(var(--acm-general-rgb));
 			color: var(--acm-light);
@@ -106,5 +104,9 @@
 				opacity: 0.7;
 			}
 		}
+	}
+
+	.limit-exceeded {
+		color: var(--acm-red);
 	}
 </style>

@@ -54,6 +54,7 @@
 			outline: none;
 			border: none;
 			text-align: right;
+			width: 35%;
 		}
 
 		.save-event,
