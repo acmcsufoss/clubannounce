@@ -1,8 +1,9 @@
 <script lang="ts">
+	export let isOpen: boolean;
 	let startDate: Date;
 </script>
 
-<form class="announcement-card">
+<form class="event-card" class:active={isOpen}>
 	<h2>Create a New Event</h2>
 	<div class="column">
 		<label for="start-time">Start Date</label>
@@ -25,15 +26,26 @@
 </form>
 
 <style lang="scss">
-	.announcement-card {
-		position: fixed;
+	.event-card {
+		z-index: 10;
+		position: absolute;
 		left: 50%;
-		transform: translate(-50%, 0);
+		top: 55%;
+		transform: translate(-50%, -50%);
 		display: flex;
 		flex-direction: column;
 		width: min(50em, 90vw);
-		padding: 2rem 2rem 0;
+		padding: 2rem;
 		background-color: var(--acm-light);
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.125s ease-in;
+
+		&.active {
+			top: 50%;
+			opacity: 1;
+			visibility: visible;
+		}
 
 		& .column {
 			margin-block-end: 2rem;
@@ -62,8 +74,8 @@
 			outline: none;
 			border: none;
 			cursor: pointer;
-			font-size: 1rem;
 			border-radius: 0.5rem;
+			font-size: 1rem;
 		}
 
 		.save-event {

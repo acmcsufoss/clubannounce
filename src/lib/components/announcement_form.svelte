@@ -10,6 +10,8 @@
 	export let readonly = false;
 	const CHAR_LIMIT = 2000;
 
+	export let isOpen: boolean;
+
 	let title = '';
 	let content = '';
 	let startDate: Date;
@@ -17,9 +19,9 @@
 	$: characterCount = title.length + content.length;
 </script>
 
-<form class="announcement-card">
-	<h2>Create a New Announcement</h2>
-	<div class="column">
+<form class="announcement-card" class:active={isOpen}>
+	<h2 class="m-bottom">Create a New Announcement</h2>
+	<div class="column m-bottom">
 		<label for="title">Title</label>
 		<input name="title" type="text" bind:value={title} />
 	</div>
@@ -28,38 +30,53 @@
 		<textarea name="content" bind:value={content} placeholder="Start typing here..." />
 	</div>
 
-	<div class="column col-right">
+	<div class="column col-right m-bottom">
 		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/2000 characters
 	</div>
 
-	<div class="column col-right">
-		<button class="save" type="submit">Save</button>
-		<button class="create" type="submit">Create</button>
-	</div>
+	{#if !readonly}
+		<div class="column col-right">
+			<button class="save" type="submit">Save</button>
+			<button class="create" type="submit">Create</button>
+		</div>
+	{/if}
 </form>
 
 <style lang="scss">
 	.announcement-card {
-		position: fixed;
+		z-index: 10;
+		position: absolute;
 		left: 50%;
-		transform: translate(-50%, 0);
+		top: 55%;
+		transform: translate(-50%, -50%);
 		display: grid;
 		flex-direction: column;
 		width: min(50em, 90vw);
-		padding: 2rem 2rem 0;
+		padding: 2rem;
 		background-color: var(--acm-light);
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.125s ease-in;
+
+		&.active {
+			top: 50%;
+			opacity: 1;
+			visibility: visible;
+		}
 
 		& .column {
-			margin-block-end: 2rem;
 			&.col-right {
 				justify-self: end;
 			}
 		}
 
+		& .m-bottom {
+			margin-block-end: 1rem;
+		}
+
 		& h2 {
 			margin-block: 0;
 			font-size: 1.75rem;
-			margin-block-end: 1rem;
 		}
 
 		& textarea {
