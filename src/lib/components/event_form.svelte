@@ -1,6 +1,8 @@
 <script lang="ts">
 	export let isOpen: boolean;
 	let startDate: Date;
+
+	let content: string;
 </script>
 
 <form class="event-card" class:active={isOpen}>
@@ -9,15 +11,18 @@
 		<label for="start-time">Start Date</label>
 		<input name="start-time" type="date" bind:value={startDate} />
 
-		<label for="start-time">Start Date</label>
+		<label for="start-time">End Date</label>
 		<input name="start-time" type="date" bind:value={startDate} />
 	</div>
 	<div class="column">
-		<label for="start-time">Start Date</label>
+		<label for="start-time">Start Time</label>
 		<input name="start-time" type="date" bind:value={startDate} />
 
-		<label for="start-time">Start Date</label>
+		<label for="start-time">End Time</label>
 		<input name="start-time" type="date" bind:value={startDate} />
+	</div>
+	<div class="column">
+		<textarea name="content" bind:value={content} placeholder="Start typing here..." />
 	</div>
 	<div class="column col-right">
 		<button class="save-event" type="submit">Save</button>
@@ -67,6 +72,23 @@
 			border: none;
 			text-align: right;
 			width: 35%;
+		}
+
+		& textarea {
+			width: 100%;
+			height: 10rem;
+			resize: none;
+		}
+
+		& input[type='text'],
+		textarea {
+			background-color: var(--acm-canvas);
+			font-size: 1rem;
+			padding: 0.5rem 1rem;
+			outline: none;
+			border: none;
+			width: 100%;
+			// text-align: left;
 		}
 
 		.save-event,

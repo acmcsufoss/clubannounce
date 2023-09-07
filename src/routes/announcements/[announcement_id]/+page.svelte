@@ -4,6 +4,6 @@
 
 <!-- URL: clubannounce.vercel.app/announcements/0000-0000-0000-0000 -->
 
-<AnnouncementForm />
+<!-- <AnnouncementForm /> -->
 
 <!-- Editable if the user is able to edit, otherwise it's read-only. -->

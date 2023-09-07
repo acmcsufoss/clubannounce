@@ -8,6 +8,10 @@ export interface ClubannounceAnnouncement {
 	 * id is the unique identifier for the announcement.
 	 */
 	id: string;
+	/**
+	 * content is the description of the announcement in Discord markdown.
+	 */
+	content: string;
 }
 
 /**

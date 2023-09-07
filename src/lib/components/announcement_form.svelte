@@ -1,22 +1,21 @@
 <script lang="ts">
 	// TODO(Ethan): Figure out how to import from $lib/clubannounce.
-	// import type { AnnouncementForm } from '$lib/clubannounce/clubannounce';
+	import type { ClubannounceAnnouncement } from '$lib/clubannounce/clubannounce';
 
-	// export let data: ClubannounceEvent;
+	export let data: ClubannounceAnnouncement;
 
 	/**
 	 * Render the card instead of the HTML form.
 	 */
 	export let readonly = false;
-	const CHAR_LIMIT = 2000;
+	const CHAR_LIMIT = 50;
 
 	export let isOpen: boolean;
 
 	let title = '';
 	let content = '';
-	let startDate: Date;
 
-	$: characterCount = title.length + content.length;
+	$: characterCount = title.length + data.content.length;
 </script>
 
 <form class="announcement-card" class:active={isOpen}>
@@ -31,7 +30,7 @@
 	</div>
 
 	<div class="column col-right m-bottom">
-		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/2000 characters
+		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/{CHAR_LIMIT} characters
 	</div>
 
 	{#if !readonly}
