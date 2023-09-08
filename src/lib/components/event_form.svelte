@@ -17,28 +17,40 @@
 <form class="event-card" class:active={isOpen}>
 	<h2 class="m-bottom">Create a New Event</h2>
 
-	<div class="column m-bottom">
-		<label for="team">Choose Team Option*</label>
-		<input type="text" name="team" />
+	<div class="column dir-col">
+		<div class="elem">
+			<label for="team">Choose Team Option*</label>
+			<input type="text" name="team" />
+		</div>
 
-		<label for="location">Where*</label>
-		<input type="text" name="location" />
+		<div class="elem">
+			<label for="location">Where*</label>
+			<input type="text" name="location" />
+		</div>
 	</div>
 
-	<div class="column m-bottom">
-		<label for="start-date">Start Date*</label>
-		<input name="start-time" type="date" bind:value={startDate} />
+	<div class="column dir-col">
+		<div class="elem">
+			<label for="start-date">Start Date*</label>
+			<input name="start-time" type="date" bind:value={startDate} />
+		</div>
 
-		<label for="end-date">End Date*</label>
-		<input name="end-date" type="date" bind:value={endDate} />
+		<div class="elem">
+			<label for="end-date">End Date*</label>
+			<input name="end-date" type="date" bind:value={endDate} />
+		</div>
 	</div>
 
-	<div class="column m-bottom">
-		<label for="start-time">Start Time*</label>
-		<input name="start-time" type="time" bind:value={startTime} />
+	<div class="column dir-col m-bottom">
+		<div class="elem">
+			<label for="start-time">Start Time*</label>
+			<input name="start-time" type="time" bind:value={startTime} />
+		</div>
 
-		<label for="end-time">End Time*</label>
-		<input name="end-time" type="time" bind:value={endTime} />
+		<div class="elem">
+			<label for="end-time">End Time*</label>
+			<input name="end-time" type="time" bind:value={endTime} />
+		</div>
 	</div>
 
 	<div class="column">
@@ -46,7 +58,9 @@
 	</div>
 
 	<div class="column col-right m-bottom">
-		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/{CHAR_LIMIT} characters
+		<div class="elem">
+			<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/{CHAR_LIMIT} characters
+		</div>
 	</div>
 
 	<div class="column col-right">
@@ -79,9 +93,12 @@
 
 		& .column {
 			display: flex;
-			flex-direction: row;
+			column-gap: 2rem;
 			&.col-right {
 				justify-self: end;
+			}
+			& .elem {
+				width: 100%;
 			}
 		}
 
@@ -91,17 +108,18 @@
 
 		& h2 {
 			margin-block: 0;
+			font-size: 1.75rem;
 		}
 
 		& input[type='date'],
 		input[type='time'] {
 			background-color: var(--acm-canvas);
 			font-size: 1rem;
-			padding: 0.75rem 1rem;
+			padding: 0.5rem 1rem;
 			outline: none;
 			border: none;
 			text-align: right;
-			width: 50%;
+			width: 100%;
 		}
 
 		& textarea {
