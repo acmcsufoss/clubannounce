@@ -15,55 +15,53 @@
 </script>
 
 <form class="event-card" class:active={isOpen}>
-	<h2 class="m-bottom">Create a New Event</h2>
+	<h2 class="mg-bottom">Create a New Event</h2>
 
-	<div class="column dir-col">
-		<div class="elem">
+	<div class="row">
+		<div class="element-column">
 			<label for="team">Choose Team Option*</label>
 			<input type="text" name="team" />
 		</div>
 
-		<div class="elem">
+		<div class="element-column">
 			<label for="location">Where*</label>
 			<input type="text" name="location" />
 		</div>
 	</div>
 
-	<div class="column dir-col">
-		<div class="elem">
+	<div class="row">
+		<div class="element-column">
 			<label for="start-date">Start Date*</label>
 			<input name="start-time" type="date" bind:value={startDate} />
 		</div>
 
-		<div class="elem">
+		<div class="element-column">
 			<label for="end-date">End Date*</label>
 			<input name="end-date" type="date" bind:value={endDate} />
 		</div>
 	</div>
 
-	<div class="column dir-col m-bottom">
-		<div class="elem">
+	<div class="row mg-bottom">
+		<div class="element-column">
 			<label for="start-time">Start Time*</label>
 			<input name="start-time" type="time" bind:value={startTime} />
 		</div>
 
-		<div class="elem">
+		<div class="element-column">
 			<label for="end-time">End Time*</label>
 			<input name="end-time" type="time" bind:value={endTime} />
 		</div>
 	</div>
 
-	<div class="column">
-		<textarea name="content" bind:value={content} placeholder="Start typing here..." />
-	</div>
+	<textarea name="content" bind:value={content} placeholder="Start typing here..." />
 
-	<div class="column col-right m-bottom">
-		<div class="elem">
+	<div class="row place-end mg-bottom">
+		<div class="element-column">
 			<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/{CHAR_LIMIT} characters
 		</div>
 	</div>
 
-	<div class="column col-right">
+	<div class="row place-end">
 		<button class="save-event" type="submit">Save</button>
 		<button class="create-event" type="submit">Create</button>
 	</div>
@@ -91,18 +89,20 @@
 			visibility: visible;
 		}
 
-		& .column {
+		& .row {
 			display: flex;
 			column-gap: 2rem;
-			&.col-right {
+
+			&.place-end {
 				justify-self: end;
 			}
-			& .elem {
+
+			& .element-column {
 				width: 100%;
 			}
 		}
 
-		& .m-bottom {
+		& .mg-bottom {
 			margin-block-end: 1rem;
 		}
 
