@@ -8,7 +8,7 @@
 	 * Render the card instead of the HTML form.
 	 */
 	export let readonly = false;
-	const CHAR_LIMIT = 50;
+	const CHAR_LIMIT = 100;
 
 	export let isOpen: boolean;
 
@@ -20,6 +20,7 @@
 
 <form class="announcement-card" class:active={isOpen}>
 	<h2 class="m-bottom">Create a New Announcement</h2>
+
 	<div class="column m-bottom">
 		<label for="title">Title</label>
 		<input name="title" type="text" bind:value={title} />
@@ -92,7 +93,6 @@
 			outline: none;
 			border: none;
 			width: 100%;
-			// text-align: left;
 		}
 
 		.save,

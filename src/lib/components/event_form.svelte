@@ -1,29 +1,54 @@
 <script lang="ts">
+	import type { ClubannounceEvent } from '$lib/clubannounce/clubannounce';
+
+	export let data: ClubannounceEvent;
 	export let isOpen: boolean;
 	let startDate: Date;
+	let endDate: Date;
+	let startTime: Date;
+	let endTime: Date;
 
-	let content: string;
+	const CHAR_LIMIT = 100;
+	let content = '';
+
+	$: characterCount = content.length;
 </script>
 
 <form class="event-card" class:active={isOpen}>
-	<h2>Create a New Event</h2>
-	<div class="column">
-		<label for="start-time">Start Date</label>
+	<h2 class="m-bottom">Create a New Event</h2>
+
+	<div class="column m-bottom">
+		<label for="team">Choose Team Option*</label>
+		<input type="text" name="team" />
+
+		<label for="location">Where*</label>
+		<input type="text" name="location" />
+	</div>
+
+	<div class="column m-bottom">
+		<label for="start-date">Start Date*</label>
 		<input name="start-time" type="date" bind:value={startDate} />
 
-		<label for="start-time">End Date</label>
-		<input name="start-time" type="date" bind:value={startDate} />
+		<label for="end-date">End Date*</label>
+		<input name="end-date" type="date" bind:value={endDate} />
 	</div>
-	<div class="column">
-		<label for="start-time">Start Time</label>
-		<input name="start-time" type="date" bind:value={startDate} />
 
-		<label for="start-time">End Time</label>
-		<input name="start-time" type="date" bind:value={startDate} />
+	<div class="column m-bottom">
+		<label for="start-time">Start Time*</label>
+		<input name="start-time" type="time" bind:value={startTime} />
+
+		<label for="end-time">End Time*</label>
+		<input name="end-time" type="time" bind:value={endTime} />
 	</div>
+
 	<div class="column">
 		<textarea name="content" bind:value={content} placeholder="Start typing here..." />
 	</div>
+
+	<div class="column col-right m-bottom">
+		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/{CHAR_LIMIT} characters
+	</div>
+
 	<div class="column col-right">
 		<button class="save-event" type="submit">Save</button>
 		<button class="create-event" type="submit">Create</button>
@@ -37,7 +62,7 @@
 		left: 50%;
 		top: 55%;
 		transform: translate(-50%, -50%);
-		display: flex;
+		display: grid;
 		flex-direction: column;
 		width: min(50em, 90vw);
 		padding: 2rem;
@@ -53,25 +78,30 @@
 		}
 
 		& .column {
-			margin-block-end: 2rem;
+			display: flex;
+			flex-direction: row;
 			&.col-right {
 				justify-self: end;
 			}
 		}
 
-		& h2 {
-			margin-block: 0;
-			margin-block-end: 2rem;
+		& .m-bottom {
+			margin-block-end: 1rem;
 		}
 
-		& input[type='date'] {
+		& h2 {
+			margin-block: 0;
+		}
+
+		& input[type='date'],
+		input[type='time'] {
 			background-color: var(--acm-canvas);
 			font-size: 1rem;
-			padding: 1rem;
+			padding: 0.75rem 1rem;
 			outline: none;
 			border: none;
 			text-align: right;
-			width: 35%;
+			width: 50%;
 		}
 
 		& textarea {
@@ -116,5 +146,9 @@
 				opacity: 0.7;
 			}
 		}
+	}
+
+	.limit-exceeded {
+		color: var(--acm-red);
 	}
 </style>

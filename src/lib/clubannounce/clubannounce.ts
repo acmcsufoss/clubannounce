@@ -42,6 +42,11 @@ export interface ClubannounceEvent {
 	 * location is the location of the event.
 	 */
 	location: ClubannounceLocation;
+
+	/**
+	 * team is the ACM team that is organizing the event (Algo, Dev, AI, etc.).
+	 */
+	team: string;
 }
 
 /**
