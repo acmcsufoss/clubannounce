@@ -21,6 +21,7 @@
 <button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
 	>Create New Announcement</button
 >
+
 <AnnouncementForm data={dummy} bind:isOpen={createAnnouncementMode} />
 
 <EventForm bind:isOpen={createEventMode} />
