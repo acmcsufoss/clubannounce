@@ -1,6 +1,12 @@
-<script>
+<script lang="ts">
 	import AnnouncementForm from '$lib/components/announcement_form.svelte';
 	import EventForm from '$lib/components/event_form.svelte';
+	import type { ClubannounceAnnouncement } from '$lib/clubannounce/clubannounce';
+
+	let dummy: ClubannounceAnnouncement = {
+		id: '12',
+		content: ''
+	};
 
 	let createEventMode = false;
 	let createAnnouncementMode = false;
@@ -15,7 +21,8 @@
 <button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
 	>Create New Announcement</button
 >
-<AnnouncementForm bind:isOpen={createAnnouncementMode} />
+
+<AnnouncementForm data={dummy} bind:isOpen={createAnnouncementMode} />
 
 <EventForm bind:isOpen={createEventMode} />
 

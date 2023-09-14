@@ -1,41 +1,39 @@
 <script lang="ts">
 	// TODO(Ethan): Figure out how to import from $lib/clubannounce.
-	// import type { AnnouncementForm } from '$lib/clubannounce/clubannounce';
+	import type { ClubannounceAnnouncement } from '$lib/clubannounce/clubannounce';
 
-	// export let data: ClubannounceEvent;
+	export let data: ClubannounceAnnouncement;
 
 	/**
 	 * Render the card instead of the HTML form.
 	 */
 	export let readonly = false;
-	const CHAR_LIMIT = 2000;
+	const CHAR_LIMIT = 100;
 
 	export let isOpen: boolean;
 
 	let title = '';
 	let content = '';
-	let startDate: Date;
 
-	$: characterCount = title.length + content.length;
+	$: characterCount = title.length + data.content.length;
 </script>
 
 <form class="announcement-card" class:active={isOpen}>
-	<h2 class="m-bottom">Create a New Announcement</h2>
-	<div class="column m-bottom">
+	<h2 class="mg-bottom">Create a New Announcement</h2>
+
+	<div class="mg-bottom">
 		<label for="title">Title</label>
 		<input name="title" type="text" bind:value={title} />
 	</div>
 
-	<div class="column">
-		<textarea name="content" bind:value={content} placeholder="Start typing here..." />
-	</div>
+	<textarea name="content" bind:value={content} placeholder="Start typing here..." />
 
-	<div class="column col-right m-bottom">
-		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/2000 characters
+	<div class="place-end mg-bottom">
+		<span class:limit-exceeded={characterCount > CHAR_LIMIT}>{characterCount}</span>/{CHAR_LIMIT} characters
 	</div>
 
 	{#if !readonly}
-		<div class="column col-right">
+		<div class="place-end">
 			<button class="save" type="submit">Save</button>
 			<button class="create" type="submit">Create</button>
 		</div>
@@ -64,13 +62,11 @@
 			visibility: visible;
 		}
 
-		& .column {
-			&.col-right {
-				justify-self: end;
-			}
+		& .place-end {
+			justify-self: end;
 		}
 
-		& .m-bottom {
+		& .mg-bottom {
 			margin-block-end: 1rem;
 		}
 
@@ -93,7 +89,6 @@
 			outline: none;
 			border: none;
 			width: 100%;
-			// text-align: left;
 		}
 
 		.save,
