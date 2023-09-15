@@ -1,11 +1,30 @@
 <script lang="ts">
 	import AnnouncementForm from '$lib/components/announcement_form.svelte';
 	import EventForm from '$lib/components/event_form.svelte';
-	import type { ClubannounceAnnouncement } from '$lib/clubannounce/clubannounce';
+	import {
+		ClubannounceLocationType,
+		type ClubannounceAnnouncement,
+		type ClubannounceEvent,
+		type ClubannounceLocation
+	} from '$lib/clubannounce/clubannounce';
 
-	let dummy: ClubannounceAnnouncement = {
+	const announcementDummy: ClubannounceAnnouncement = {
 		id: '12',
 		content: ''
+	};
+
+	const location: ClubannounceLocation = {
+		type: ClubannounceLocationType.ROOM_ID,
+		value: ''
+	};
+
+	const eventDummy: ClubannounceEvent = {
+		id: '12',
+		content: '',
+		location: location,
+		startDatetime: new Date(),
+		endDatetime: new Date(),
+		team: 'Algo'
 	};
 
 	let createEventMode = false;
@@ -21,9 +40,9 @@
 <button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
 	>Create New Announcement</button
 >
-<AnnouncementForm data={dummy} bind:isOpen={createAnnouncementMode} />
+<AnnouncementForm data={announcementDummy} bind:isOpen={createAnnouncementMode} />
 
-<EventForm bind:isOpen={createEventMode} />
+<EventForm data={eventDummy} bind:isOpen={createEventMode} />
 
 <div
 	class="full-window-overlay"

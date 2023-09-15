@@ -9,9 +9,8 @@
 	let endTime: Date;
 
 	const CHAR_LIMIT = 100;
-	let content = '';
 
-	$: characterCount = content.length;
+	$: characterCount = data.content.length;
 </script>
 
 <form class="event-card" class:active={isOpen}>
@@ -20,12 +19,12 @@
 	<div class="row">
 		<div class="element-column">
 			<label for="team">Choose Team Option*</label>
-			<input type="text" name="team" />
+			<input type="text" name="team" bind:value={data.team} />
 		</div>
 
 		<div class="element-column">
 			<label for="location">Where*</label>
-			<input type="text" name="location" />
+			<input type="text" name="location" bind:value={data.location.value} />
 		</div>
 	</div>
 
@@ -53,7 +52,7 @@
 		</div>
 	</div>
 
-	<textarea name="content" bind:value={content} placeholder="Start typing here..." />
+	<textarea name="content" bind:value={data.content} placeholder="Start typing here..." />
 
 	<div class="row place-end mg-bottom">
 		<div class="element-column">
@@ -62,7 +61,7 @@
 	</div>
 
 	<div class="row place-end">
-		<button class="save-event" type="submit">Save</button>
+		<button class="save-event" type="submit" on:click={() => console.log(data)}>Save</button>
 		<button class="create-event" type="submit">Create</button>
 	</div>
 </form>
