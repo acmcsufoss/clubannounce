@@ -31,32 +31,39 @@
 	let createAnnouncementMode = false;
 </script>
 
-<h1>Dashboard with the list of announcements and events.</h1>
-<h2>Events</h2>
-<button class="create" on:click={() => (createEventMode = !createEventMode)}
-	>Create New Event</button
->
-<h2>Announcements</h2>
-<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
-	>Create New Announcement</button
->
-<AnnouncementForm data={announcementDummy} bind:isOpen={createAnnouncementMode} />
+<main class="app">
+	<h2>Events</h2>
+	<button class="create" on:click={() => (createEventMode = !createEventMode)}
+		>Create New Event</button
+	>
+	<h2>Announcements</h2>
+	<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
+		>Create New Announcement</button
+	>
+	<AnnouncementForm data={announcementDummy} bind:isOpen={createAnnouncementMode} />
 
-<EventForm data={eventDummy} bind:isOpen={createEventMode} />
+	<EventForm data={eventDummy} bind:isOpen={createEventMode} />
 
-<div
-	class="full-window-overlay"
-	class:active={createAnnouncementMode || createEventMode}
-	on:click={() => ((createAnnouncementMode = false), (createEventMode = false))}
-	on:keydown={() => ((createAnnouncementMode = false), (createEventMode = false))}
-	role="button"
-	aria-pressed="false"
-	tabindex="0"
-/>
-
-<!-- <EventForm /> -->
+	<div
+		class="full-window-overlay"
+		class:active={createAnnouncementMode || createEventMode}
+		on:click={() => ((createAnnouncementMode = false), (createEventMode = false))}
+		on:keydown={() => ((createAnnouncementMode = false), (createEventMode = false))}
+		role="button"
+		aria-pressed="false"
+		tabindex="0"
+	/>
+</main>
 
 <style lang="scss">
+	.app {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+
 	.create {
 		outline: none;
 		border: none;
