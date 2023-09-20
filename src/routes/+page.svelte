@@ -7,8 +7,9 @@
 		type ClubannounceEvent,
 		type ClubannounceLocation
 	} from '$lib/clubannounce/clubannounce';
+	import EventCard from '$lib/components/event_card.svelte';
 
-	const announcementDummy: ClubannounceAnnouncement = {
+	let announcementDummy: ClubannounceAnnouncement = {
 		id: '12',
 		content: ''
 	};
@@ -18,7 +19,7 @@
 		value: ''
 	};
 
-	const eventDummy: ClubannounceEvent = {
+	let eventDummy: ClubannounceEvent = {
 		id: '12',
 		content: '',
 		location: location,
@@ -33,6 +34,7 @@
 
 <main class="app">
 	<h2>Events</h2>
+	<EventCard data={announcementDummy} />
 	<button class="create" on:click={() => (createEventMode = !createEventMode)}
 		>Create New Event</button
 	>
@@ -40,9 +42,9 @@
 	<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
 		>Create New Announcement</button
 	>
-	<AnnouncementForm data={announcementDummy} bind:isOpen={createAnnouncementMode} />
+	<AnnouncementForm bind:data={announcementDummy} bind:isOpen={createAnnouncementMode} />
 
-	<EventForm data={eventDummy} bind:isOpen={createEventMode} />
+	<EventForm bind:data={eventDummy} bind:isOpen={createEventMode} />
 
 	<div
 		class="full-window-overlay"

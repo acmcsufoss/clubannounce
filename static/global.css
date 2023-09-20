@@ -8,7 +8,8 @@
 	--acm-canvas: #eaeaea;
 	--acm-canvas-2: #e7e7e7;
 	--acm-general-rgb: 5, 163, 255;
-
+	
+	--nav-shadow: 0 3px 12px rgba(16, 19, 21, 0.1);
 	--size-xxl: clamp(2.8125rem, 1.8403rem + 5.5556vw, 5.3125rem);
 	--size-xl: clamp(2rem, 1.7545rem + 1.0909vw, 3.5rem);
 	--size-lg: clamp(1.5rem, 1.3773rem + 0.5455vw, 2.25rem);
@@ -32,6 +33,7 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
 	font-weight: 600;
 }
