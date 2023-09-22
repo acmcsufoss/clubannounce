@@ -43,7 +43,7 @@
 <style lang="scss">
 	.announcement-card {
 		z-index: 10;
-		position: absolute;
+		position: fixed;
 		left: 50%;
 		top: 55%;
 		transform: translate(-50%, -50%);
