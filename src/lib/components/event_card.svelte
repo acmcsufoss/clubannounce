@@ -1,27 +1,29 @@
 <script lang="ts">
-	import type { ClubannounceAnnouncement } from '$lib/clubannounce/clubannounce';
+	import type { ClubannounceEvent } from '$lib/clubannounce/clubannounce';
 
-	export let data: ClubannounceAnnouncement;
+	export let data: ClubannounceEvent;
+
+	let team = 'AI';
+	$: startDateString = data.startDatetime.toString();
+	$: endDateString = data.endDatetime;
+	$: startTime = startDateString.substring(0, startDateString.indexOf('GMT'));
+	$: endTime = endDateString.toString();
 </script>
 
 <div class="column card">
 	<div class="team-icon-wrapper">
-		<img class="logo" src="/assets/badges/oss.svg" alt="OSS Team Badge" />
+		<img class="logo" src="/assets/badges/{team.toLowerCase()}.svg" alt="{team} Team Badge" />
 	</div>
 
 	<div class="column">
 		<div>
 			<h3>OSS Summer Hackathon</h3>
 			<div>
-				<div>Sept 23: 5:00pm - 6:00pm</div>
-				<div>CS 202</div>
+				<div>{startTime} - {endTime}</div>
+				<div>{data.location.value}</div>
 			</div>
 		</div>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus veniam accusantium quasi
-			assumenda, optio facere placeat similique exercitationem nam fuga rerum excepturi quidem
-			eveniet, consectetur nulla provident? Nisi, inventore quia.
-		</p>
+		<p>{data.content}</p>
 
 		<button class="join">JOIN</button>
 	</div>
@@ -34,9 +36,9 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		max-width: min(50vw, 90vw);
+		max-width: min(50rem, 90vw);
 		padding: 1rem 2rem;
-		background-color: var(--acm-canvas);
+		background-color: var(--acm-light);
 		border-radius: 0.5rem;
 		box-shadow: var(--nav-shadow);
 		margin-bottom: 1rem;
@@ -55,9 +57,13 @@
 			}
 		}
 
+		& h3 {
+			font-size: 1.5rem;
+		}
+
 		& .team-icon-wrapper {
 			& .logo {
-				width: 64px;
+				width: 3.5rem;
 			}
 		}
 

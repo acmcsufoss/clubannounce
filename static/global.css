@@ -5,10 +5,11 @@
 	--acm-dark: #101315;
 	--acm-light: #f8f8f8;
 	--acm-red: #d41153;
+	--acm-light: #f8f8f8;
 	--acm-canvas: #eaeaea;
 	--acm-canvas-2: #e7e7e7;
 	--acm-general-rgb: 5, 163, 255;
-	
+
 	--nav-shadow: 0 3px 12px rgba(16, 19, 21, 0.1);
 	--size-xxl: clamp(2.8125rem, 1.8403rem + 5.5556vw, 5.3125rem);
 	--size-xl: clamp(2rem, 1.7545rem + 1.0909vw, 3.5rem);
@@ -32,8 +33,13 @@ body {
 	padding: 0;
 }
 
+body {
+	background-color: var(--acm-light);
+}
+
 h1,
 h2,
 h3 {
 	font-weight: 600;
+	margin: 0;
 }

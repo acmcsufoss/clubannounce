@@ -16,7 +16,7 @@
 
 	const location: ClubannounceLocation = {
 		type: ClubannounceLocationType.ROOM_ID,
-		value: ''
+		value: 'CS 202'
 	};
 
 	let eventDummy: ClubannounceEvent = {
@@ -28,13 +28,23 @@
 		team: 'Algo'
 	};
 
+	let eventDummy2: ClubannounceEvent = {
+		id: '13',
+		content:
+			'Join us in the Open Source Software Team Kickoff. We will be displaying all the projects that the team has been working on!',
+		location: location,
+		startDatetime: new Date(),
+		endDatetime: new Date(),
+		team: 'OSS'
+	};
+
 	let createEventMode = false;
 	let createAnnouncementMode = false;
 </script>
 
 <main class="app">
 	<h2>Events</h2>
-	<EventCard data={announcementDummy} />
+	<EventCard data={eventDummy2} />
 	<button class="create" on:click={() => (createEventMode = !createEventMode)}
 		>Create New Event</button
 	>
