@@ -3,11 +3,11 @@
 
 	export let data: ClubannounceEvent;
 
-	let team = 'AI';
-	$: startDateString = data.startDatetime.toString();
-	$: endDateString = data.endDatetime;
-	$: startTime = startDateString.substring(0, startDateString.indexOf('GMT'));
-	$: endTime = endDateString.toString();
+	let team = data.team + (data.team !== 'OSS' ? '-team' : '');
+	// $: startDateString = data.startDatetime.toString();
+	// $: endDateString = data.endDatetime;
+	// $: startTime = startDateString.substring(0, startDateString.indexOf('GMT'));
+	// $: endTime = data.endDatetime.getHours() + ':' + data.endDatetime.getMinutes();
 </script>
 
 <div class="column card">
@@ -19,13 +19,15 @@
 		<div>
 			<h3>OSS Summer Hackathon</h3>
 			<div>
-				<div>{startTime} - {endTime}</div>
+				<time>{data.startDatetime} - {data.endDatetime}</time>
 				<div>{data.location.value}</div>
 			</div>
 		</div>
 		<p>{data.content}</p>
 
-		<button class="join">JOIN</button>
+		<div class="place-end">
+			<button class="join place-end">JOIN</button>
+		</div>
 	</div>
 
 	<!-- <div>Time</div> -->
@@ -50,10 +52,15 @@
 				align-items: center;
 				justify-content: space-between;
 
-				& div {
+				& div,
+				time {
 					flex-direction: column;
 					align-self: end;
+					text-align: right;
 				}
+			}
+			& .place-end {
+				margin-left: auto;
 			}
 		}
 

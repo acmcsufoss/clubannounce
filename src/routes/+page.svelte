@@ -7,7 +7,7 @@
 		type ClubannounceEvent,
 		type ClubannounceLocation
 	} from '$lib/clubannounce/clubannounce';
-	import EventCard from '$lib/components/event_card.svelte';
+	import EventList from '$lib/components/event_list.svelte';
 
 	let announcementDummy: ClubannounceAnnouncement = {
 		id: '12',
@@ -28,30 +28,24 @@
 		team: 'Algo'
 	};
 
-	let eventDummy2: ClubannounceEvent = {
-		id: '13',
-		content:
-			'Join us in the Open Source Software Team Kickoff. We will be displaying all the projects that the team has been working on!',
-		location: location,
-		startDatetime: new Date(),
-		endDatetime: new Date(),
-		team: 'OSS'
-	};
-
 	let createEventMode = false;
 	let createAnnouncementMode = false;
 </script>
 
 <main class="app">
 	<h2>Events</h2>
-	<EventCard data={eventDummy2} />
-	<button class="create" on:click={() => (createEventMode = !createEventMode)}
-		>Create New Event</button
-	>
+	<EventList />
+	<div class="place-end">
+		<button class="create" on:click={() => (createEventMode = !createEventMode)}>
+			Create New Event
+		</button>
+	</div>
 	<h2>Announcements</h2>
-	<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
-		>Create New Announcement</button
-	>
+	<div class="place-end">
+		<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
+			>Create New Announcement
+		</button>
+	</div>
 	<AnnouncementForm bind:data={announcementDummy} bind:isOpen={createAnnouncementMode} />
 
 	<EventForm bind:data={eventDummy} bind:isOpen={createEventMode} />
@@ -73,7 +67,15 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
+		// width: fit-content;
+
+		& h2 {
+			font-size: 2rem;
+		}
+
+		// & .place-end {
+		// 	margin-left: auto;
+		// }
 	}
 
 	.create {
