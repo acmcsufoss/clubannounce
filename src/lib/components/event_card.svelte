@@ -2,6 +2,7 @@
 	import type { ClubannounceEvent } from '$lib/clubannounce/clubannounce';
 
 	export let data: ClubannounceEvent;
+	export let title: string;
 
 	let team = data.team + (data.team !== 'OSS' ? '-team' : '');
 	// $: startDateString = data.startDatetime.toString();
@@ -17,16 +18,24 @@
 
 	<div class="column">
 		<div>
-			<h3>OSS Summer Hackathon</h3>
+			<h3>{title}</h3>
 			<div>
 				<time>{data.startDatetime} - {data.endDatetime}</time>
-				<div>{data.location.value}</div>
+				<div>
+					<span>
+						<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
+						{data.location.value}
+					</span>
+				</div>
 			</div>
 		</div>
 		<p>{data.content}</p>
 
 		<div class="place-end">
 			<button class="join place-end">JOIN</button>
+			<button class="drop-menu">
+				<img class="md-icon" src="/assets/svg/three-dots.svg" alt="Event Card Dropdown" />
+			</button>
 		</div>
 	</div>
 
@@ -65,7 +74,7 @@
 		}
 
 		& h3 {
-			font-size: 1.5rem;
+			font-size: 1.25rem;
 		}
 
 		& .team-icon-wrapper {
@@ -74,20 +83,45 @@
 			}
 		}
 
-		& .join {
+		& .join,
+		& .drop-menu {
 			outline: none;
 			border: none;
 			cursor: pointer;
+			transition: all 0.2s ease-in;
+		}
+
+		& .drop-menu {
+			margin-inline-start: 0.5rem;
+			padding: 0;
+			border-radius: 50%;
+			width: 3rem;
+			aspect-ratio: 1;
+			background-color: transparent;
+
+			&:hover {
+				background-color: var(--acm-canvas);
+			}
+		}
+
+		& .join {
 			padding: 0.75rem 1.5rem;
 			border-radius: 0.5rem;
 			font-size: 1rem;
 			background-color: rgb(var(--acm-general-rgb));
 			color: var(--acm-light);
-			transition: all 0.2s ease-in;
 
 			&:hover {
 				opacity: 0.7;
 			}
 		}
+	}
+
+	.sm-icon {
+		width: 1rem;
+	}
+
+	.md-icon {
+		width: 1.5rem;
 	}
 </style>
