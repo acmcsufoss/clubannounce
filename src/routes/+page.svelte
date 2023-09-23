@@ -1,44 +1,83 @@
 <script lang="ts">
 	import AnnouncementForm from '$lib/components/announcement_form.svelte';
 	import EventForm from '$lib/components/event_form.svelte';
-	import type { ClubannounceAnnouncement } from '$lib/clubannounce/clubannounce';
+	import {
+		ClubannounceLocationType,
+		type ClubannounceAnnouncement,
+		type ClubannounceEvent,
+		type ClubannounceLocation
+	} from '$lib/clubannounce/clubannounce';
+	import EventList from '$lib/components/event_list.svelte';
 
-	let dummy: ClubannounceAnnouncement = {
+	let announcementDummy: ClubannounceAnnouncement = {
 		id: '12',
 		content: ''
+	};
+
+	const location: ClubannounceLocation = {
+		type: ClubannounceLocationType.ROOM_ID,
+		value: 'CS 202'
+	};
+
+	let eventDummy: ClubannounceEvent = {
+		id: '12',
+		content: '',
+		location: location,
+		startDatetime: new Date(),
+		endDatetime: new Date(),
+		team: 'Algo'
 	};
 
 	let createEventMode = false;
 	let createAnnouncementMode = false;
 </script>
 
-<h1>Dashboard with the list of announcements and events.</h1>
-<h2>Events</h2>
-<button class="create" on:click={() => (createEventMode = !createEventMode)}
-	>Create New Event</button
->
-<h2>Announcements</h2>
-<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
-	>Create New Announcement</button
->
+<main class="app">
+	<h2>Events</h2>
+	<EventList />
+	<div class="place-end">
+		<button class="create" on:click={() => (createEventMode = !createEventMode)}>
+			Create New Event
+		</button>
+	</div>
+	<h2>Announcements</h2>
+	<div class="place-end">
+		<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
+			>Create New Announcement
+		</button>
+	</div>
+	<AnnouncementForm bind:data={announcementDummy} bind:isOpen={createAnnouncementMode} />
 
-<AnnouncementForm data={dummy} bind:isOpen={createAnnouncementMode} />
+	<EventForm bind:data={eventDummy} bind:isOpen={createEventMode} />
 
-<EventForm bind:isOpen={createEventMode} />
-
-<div
-	class="full-window-overlay"
-	class:active={createAnnouncementMode || createEventMode}
-	on:click={() => ((createAnnouncementMode = false), (createEventMode = false))}
-	on:keydown={() => ((createAnnouncementMode = false), (createEventMode = false))}
-	role="button"
-	aria-pressed="false"
-	tabindex="0"
-/>
-
-<!-- <EventForm /> -->
+	<div
+		class="full-window-overlay"
+		class:active={createAnnouncementMode || createEventMode}
+		on:click={() => ((createAnnouncementMode = false), (createEventMode = false))}
+		on:keydown={() => ((createAnnouncementMode = false), (createEventMode = false))}
+		role="button"
+		aria-pressed="false"
+		tabindex="0"
+	/>
+</main>
 
 <style lang="scss">
+	.app {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		// width: fit-content;
+
+		& h2 {
+			font-size: 2rem;
+		}
+
+		// & .place-end {
+		// 	margin-left: auto;
+		// }
+	}
+
 	.create {
 		outline: none;
 		border: none;
