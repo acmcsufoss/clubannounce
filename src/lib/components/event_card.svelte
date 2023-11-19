@@ -4,7 +4,7 @@
 	export let data: ClubannounceEvent;
 	export let title: string;
 
-	let team = data.team + (data.team !== 'OSS' ? '-team' : '');
+	let team = data.team + '-badge';
 	// $: startDateString = data.startDatetime.toString();
 	// $: endDateString = data.endDatetime;
 	// $: startTime = startDateString.substring(0, startDateString.indexOf('GMT'));
@@ -49,9 +49,9 @@
 		gap: 1rem;
 		max-width: min(50rem, 90vw);
 		padding: 1rem 2rem;
-		background-color: var(--acm-light);
+		background-color: var(--acm-light-blue);
 		border-radius: 0.5rem;
-		box-shadow: var(--nav-shadow);
+		// box-shadow: var(--nav-shadow);
 		margin-bottom: 1rem;
 
 		& .column {
@@ -108,7 +108,7 @@
 			padding: 0.75rem 1.5rem;
 			border-radius: 0.5rem;
 			font-size: 1rem;
-			background-color: rgb(var(--acm-general-rgb));
+			background-color: var(--acm-darker);
 			color: var(--acm-light);
 
 			&:hover {

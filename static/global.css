@@ -3,9 +3,10 @@
 :root {
 	/* Reusing acmcsuf.com custom properties */
 	--acm-dark: #101315;
+	--acm-darker: #092d71;
+	--acm-light-blue: #ebf8ff;
 	--acm-light: #f8f8f8;
 	--acm-red: #d41153;
-	--acm-light: #f8f8f8;
 	--acm-canvas: #eaeaea;
 	--acm-canvas-2: #e7e7e7;
 	--acm-general-rgb: 5, 163, 255;
@@ -35,6 +36,7 @@ body {
 
 body {
 	background-color: var(--acm-light);
+	background-color: #ffffff;
 }
 
 h1,
