@@ -32,7 +32,7 @@
 		<p>{data.content}</p>
 
 		<div class="place-end">
-			<button class="join place-end">JOIN</button>
+			<button class="join place-end">RSVP</button>
 			<button class="drop-menu">
 				<img class="md-icon" src="/assets/svg/three-dots.svg" alt="Event Card Dropdown" />
 			</button>

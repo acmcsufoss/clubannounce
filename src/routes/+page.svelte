@@ -8,6 +8,7 @@
 		type ClubannounceLocation
 	} from '$lib/clubannounce/clubannounce';
 	import EventList from '$lib/components/event_list.svelte';
+	import Hero from '$lib/components/hero.svelte';
 
 	let announcementDummy: ClubannounceAnnouncement = {
 		id: '12',
@@ -33,7 +34,9 @@
 </script>
 
 <main class="app">
-	<h2>Events</h2>
+	<Hero />
+
+	<h2>September 05</h2>
 	<EventList />
 	<div class="place-end">
 		<button class="create" on:click={() => (createEventMode = !createEventMode)}>
