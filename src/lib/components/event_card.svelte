@@ -21,8 +21,9 @@
 	</div>
 
 	<div>
-		<time>{data.startDatetime} - {data.endDatetime}</time>
 		<div>
+			<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
+			<time>5:00pm - 6:00pm</time>
 			<span>
 				<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
 				{data.location.value}
