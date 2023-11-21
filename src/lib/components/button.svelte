@@ -10,8 +10,8 @@
 		border: none;
 		cursor: pointer;
 		transition: all 0.2s ease-in;
-		padding: 0.5rem 0.75rem;
-		border-radius: 1rem;
+		padding: 0.5rem 1rem;
+		border-radius: 1.25rem;
 		font-size: var(--size-xs);
 		background-color: var(--acm-darker);
 		color: var(--acm-light);

@@ -33,25 +33,27 @@
 	let createAnnouncementMode = false;
 </script>
 
-<main class="app">
+<div class="app">
 	<Hero />
 
-	<h2>September 05</h2>
-	<EventList />
-	<div class="place-end">
-		<button class="create" on:click={() => (createEventMode = !createEventMode)}>
-			Create New Event
-		</button>
-	</div>
-	<h2>Announcements</h2>
-	<div class="place-end">
-		<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
-			>Create New Announcement
-		</button>
-	</div>
-	<AnnouncementForm bind:data={announcementDummy} bind:isOpen={createAnnouncementMode} />
+	<main>
+		<h2 class="subtitle">September 05</h2>
+		<EventList />
+		<div class="place-end">
+			<button class="create" on:click={() => (createEventMode = !createEventMode)}>
+				Create New Event
+			</button>
+		</div>
+		<h2 class="subtitle">Announcements</h2>
+		<div class="place-end">
+			<button class="create" on:click={() => (createAnnouncementMode = !createAnnouncementMode)}
+				>Create New Announcement
+			</button>
+		</div>
+		<AnnouncementForm bind:data={announcementDummy} bind:isOpen={createAnnouncementMode} />
 
-	<EventForm bind:data={eventDummy} bind:isOpen={createEventMode} />
+		<EventForm bind:data={eventDummy} bind:isOpen={createEventMode} />
+	</main>
 
 	<div
 		class="full-window-overlay"
@@ -62,7 +64,7 @@
 		aria-pressed="false"
 		tabindex="0"
 	/>
-</main>
+</div>
 
 <style lang="scss">
 	.app {
@@ -76,9 +78,18 @@
 			font-size: 2rem;
 		}
 
-		// & .place-end {
-		// 	margin-left: auto;
-		// }
+		& main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	.subtitle {
+		width: 100%;
+		border-bottom: 1px solid black;
+		margin: 1rem;
 	}
 
 	.create {
