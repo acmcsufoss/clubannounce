@@ -1,10 +1,11 @@
 <script lang="ts">
 	import type { ClubannounceEvent } from '$lib/clubannounce/clubannounce';
+	import Button from './button.svelte';
 
 	export let data: ClubannounceEvent;
 	export let title: string;
 
-	let team = data.team + (data.team !== 'OSS' ? '-team' : '');
+	let team = data.team + '-badge';
 	// $: startDateString = data.startDatetime.toString();
 	// $: endDateString = data.endDatetime;
 	// $: startTime = startDateString.substring(0, startDateString.indexOf('GMT'));
@@ -12,27 +13,29 @@
 </script>
 
 <div class="column card">
-	<div class="team-icon-wrapper">
+	<div class="header-wrapper">
 		<img class="logo" src="/assets/badges/{team.toLowerCase()}.svg" alt="{team} Team Badge" />
+		<div>
+			<h3>{title}</h3>
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
+			<time>5:00pm - 6:00pm</time>
+			<span>
+				<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
+				{data.location.value}
+			</span>
+		</div>
 	</div>
 
 	<div class="column">
-		<div>
-			<h3>{title}</h3>
-			<div>
-				<time>{data.startDatetime} - {data.endDatetime}</time>
-				<div>
-					<span>
-						<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
-						{data.location.value}
-					</span>
-				</div>
-			</div>
-		</div>
 		<p>{data.content}</p>
 
 		<div class="place-end">
-			<button class="join place-end">JOIN</button>
+			<Button content="RSVP" />
 			<button class="drop-menu">
 				<img class="md-icon" src="/assets/svg/three-dots.svg" alt="Event Card Dropdown" />
 			</button>
@@ -45,13 +48,13 @@
 <style lang="scss">
 	.card {
 		display: flex;
-		align-items: center;
-		gap: 1rem;
-		max-width: min(50rem, 90vw);
-		padding: 1rem 2rem;
-		background-color: var(--acm-light);
+		flex-direction: column;
+		// align-items: center;
+		gap: 0.5rem;
+		max-width: min(45rem, 80vw);
+		padding: 1rem;
+		background-color: var(--acm-light-blue);
 		border-radius: 0.5rem;
-		box-shadow: var(--nav-shadow);
 		margin-bottom: 1rem;
 
 		& .column {
@@ -74,16 +77,20 @@
 		}
 
 		& h3 {
-			font-size: 1.25rem;
+			font-size: var(--size-md);
 		}
 
-		& .team-icon-wrapper {
+		& .header-wrapper {
+			display: grid;
+			grid-template-columns: 3.5rem 1fr;
+			align-items: center;
+			justify-content: start;
+			gap: 1rem;
 			& .logo {
 				width: 3.5rem;
 			}
 		}
 
-		& .join,
 		& .drop-menu {
 			outline: none;
 			border: none;
@@ -103,18 +110,6 @@
 				background-color: var(--acm-canvas);
 			}
 		}
-
-		& .join {
-			padding: 0.75rem 1.5rem;
-			border-radius: 0.5rem;
-			font-size: 1rem;
-			background-color: rgb(var(--acm-general-rgb));
-			color: var(--acm-light);
-
-			&:hover {
-				opacity: 0.7;
-			}
-		}
 	}
 
 	.sm-icon {
@@ -123,5 +118,11 @@
 
 	.md-icon {
 		width: 1.5rem;
+	}
+
+	@media screen and (min-width: 768px) {
+		.card {
+			flex-direction: row;
+		}
 	}
 </style>
