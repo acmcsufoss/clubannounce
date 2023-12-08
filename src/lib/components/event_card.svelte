@@ -21,19 +21,21 @@
 			</div>
 		</div>
 
-		<div>
-			<div>
+		<div class="offset">
+			<div class="event-info">
 				<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
+				&nbsp;
 				<time>5:00pm - 6:00pm</time>
+				&nbsp;&nbsp;
 				<span>
 					<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
 					{data.location.value}
 				</span>
 			</div>
-		</div>
 
-		<div class="column">
-			<p>{data.content}</p>
+			<div>
+				<p>{data.content}</p>
+			</div>
 		</div>
 	</div>
 
@@ -47,36 +49,12 @@
 	.card {
 		display: flex;
 		flex-direction: column;
-		// align-items: center;
 		gap: 0.5rem;
 		max-width: min(45rem, 80vw);
 		padding: 1rem;
 		background-color: var(--acm-light-blue);
 		border-radius: 0.5rem;
 		margin-bottom: 1rem;
-
-		& .main {
-			display: grid;
-		}
-
-		& .column {
-			& div {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: space-between;
-
-				& div,
-				time {
-					flex-direction: column;
-					align-self: end;
-					text-align: right;
-				}
-			}
-			& .place-end {
-				margin-left: auto;
-			}
-		}
 
 		& h3 {
 			font-size: var(--size-md);
@@ -94,6 +72,19 @@
 		}
 	}
 
+	.event-info {
+		display: flex;
+		align-items: center;
+		& time,
+		& span {
+			font-weight: 600;
+		}
+	}
+
+	p {
+		margin-block: 0.5rem;
+	}
+
 	.sm-icon {
 		width: 1rem;
 	}
@@ -103,7 +94,10 @@
 			flex-direction: row;
 
 			& .main {
-				// grid-template-columns: 1fr 1fr;
+				& .offset {
+					margin-left: 4.5rem;
+					margin-top: -0.75rem;
+				}
 			}
 		}
 	}
