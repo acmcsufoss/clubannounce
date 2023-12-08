@@ -83,6 +83,10 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+
+			& .place-end {
+				place-items: right;
+			}
 		}
 	}
 
@@ -99,7 +103,7 @@
 		padding: 0.75rem 1.5rem;
 		border-radius: 0.5rem;
 		font-size: 1rem;
-		background-color: rgb(var(--acm-general-rgb));
+		background-color: var(--acm-darker);
 		color: var(--acm-light);
 		transition: all 0.2s ease-in;
 

@@ -12,36 +12,34 @@
 	// $: endTime = data.endDatetime.getHours() + ':' + data.endDatetime.getMinutes();
 </script>
 
-<div class="column card">
-	<div class="header-wrapper">
-		<img class="logo" src="/assets/badges/{team.toLowerCase()}.svg" alt="{team} Team Badge" />
+<div class="card">
+	<div class="main">
+		<div class="header-wrapper">
+			<img class="logo" src="/assets/badges/{team.toLowerCase()}.svg" alt="{team} Team Badge" />
+			<div>
+				<h3>{title}</h3>
+			</div>
+		</div>
+
 		<div>
-			<h3>{title}</h3>
+			<div>
+				<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
+				<time>5:00pm - 6:00pm</time>
+				<span>
+					<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
+					{data.location.value}
+				</span>
+			</div>
+		</div>
+
+		<div class="column">
+			<p>{data.content}</p>
 		</div>
 	</div>
 
-	<div>
-		<div>
-			<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
-			<time>5:00pm - 6:00pm</time>
-			<span>
-				<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
-				{data.location.value}
-			</span>
-		</div>
+	<div class="place-end">
+		<Button content="RSVP" />
 	</div>
-
-	<div class="column">
-		<p>{data.content}</p>
-
-		<div class="place-end">
-			<Button content="RSVP" />
-			<button class="drop-menu">
-				<img class="md-icon" src="/assets/svg/three-dots.svg" alt="Event Card Dropdown" />
-			</button>
-		</div>
-	</div>
-
 	<!-- <div>Time</div> -->
 </div>
 
@@ -56,6 +54,10 @@
 		background-color: var(--acm-light-blue);
 		border-radius: 0.5rem;
 		margin-bottom: 1rem;
+
+		& .main {
+			display: grid;
+		}
 
 		& .column {
 			& div {
@@ -90,39 +92,19 @@
 				width: 3.5rem;
 			}
 		}
-
-		& .drop-menu {
-			outline: none;
-			border: none;
-			cursor: pointer;
-			transition: all 0.2s ease-in;
-		}
-
-		& .drop-menu {
-			margin-inline-start: 0.5rem;
-			padding: 0;
-			border-radius: 50%;
-			width: 3rem;
-			aspect-ratio: 1;
-			background-color: transparent;
-
-			&:hover {
-				background-color: var(--acm-canvas);
-			}
-		}
 	}
 
 	.sm-icon {
 		width: 1rem;
 	}
 
-	.md-icon {
-		width: 1.5rem;
-	}
-
 	@media screen and (min-width: 768px) {
 		.card {
 			flex-direction: row;
+
+			& .main {
+				// grid-template-columns: 1fr 1fr;
+			}
 		}
 	}
 </style>
