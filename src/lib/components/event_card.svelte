@@ -12,36 +12,36 @@
 	// $: endTime = data.endDatetime.getHours() + ':' + data.endDatetime.getMinutes();
 </script>
 
-<div class="column card">
-	<div class="header-wrapper">
-		<img class="logo" src="/assets/badges/{team.toLowerCase()}.svg" alt="{team} Team Badge" />
-		<div>
-			<h3>{title}</h3>
+<div class="card">
+	<div class="main">
+		<div class="header-wrapper">
+			<img class="logo" src="/assets/badges/{team.toLowerCase()}.svg" alt="{team} Team Badge" />
+			<div>
+				<h3>{title}</h3>
+			</div>
+		</div>
+
+		<div class="offset">
+			<div class="event-info">
+				<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
+				&nbsp;
+				<time>5:00pm - 6:00pm</time>
+				&nbsp;&nbsp;
+				<span>
+					<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
+					{data.location.value}
+				</span>
+			</div>
+
+			<div>
+				<p>{data.content}</p>
+			</div>
 		</div>
 	</div>
 
-	<div>
-		<div>
-			<img class="sm-icon" src="/assets/time-icon.png" alt="Time Icon" />
-			<time>5:00pm - 6:00pm</time>
-			<span>
-				<img class="sm-icon" src="/assets/location-icon.png" alt="Location Icon" />
-				{data.location.value}
-			</span>
-		</div>
+	<div class="place-end">
+		<Button content="RSVP" />
 	</div>
-
-	<div class="column">
-		<p>{data.content}</p>
-
-		<div class="place-end">
-			<Button content="RSVP" />
-			<button class="drop-menu">
-				<img class="md-icon" src="/assets/svg/three-dots.svg" alt="Event Card Dropdown" />
-			</button>
-		</div>
-	</div>
-
 	<!-- <div>Time</div> -->
 </div>
 
@@ -49,32 +49,12 @@
 	.card {
 		display: flex;
 		flex-direction: column;
-		// align-items: center;
 		gap: 0.5rem;
 		max-width: min(45rem, 80vw);
 		padding: 1rem;
 		background-color: var(--acm-light-blue);
 		border-radius: 0.5rem;
 		margin-bottom: 1rem;
-
-		& .column {
-			& div {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				justify-content: space-between;
-
-				& div,
-				time {
-					flex-direction: column;
-					align-self: end;
-					text-align: right;
-				}
-			}
-			& .place-end {
-				margin-left: auto;
-			}
-		}
 
 		& h3 {
 			font-size: var(--size-md);
@@ -90,39 +70,35 @@
 				width: 3.5rem;
 			}
 		}
+	}
 
-		& .drop-menu {
-			outline: none;
-			border: none;
-			cursor: pointer;
-			transition: all 0.2s ease-in;
+	.event-info {
+		display: flex;
+		align-items: center;
+		& time,
+		& span {
+			font-weight: 600;
 		}
+	}
 
-		& .drop-menu {
-			margin-inline-start: 0.5rem;
-			padding: 0;
-			border-radius: 50%;
-			width: 3rem;
-			aspect-ratio: 1;
-			background-color: transparent;
-
-			&:hover {
-				background-color: var(--acm-canvas);
-			}
-		}
+	p {
+		margin-block: 0.5rem;
 	}
 
 	.sm-icon {
 		width: 1rem;
 	}
 
-	.md-icon {
-		width: 1.5rem;
-	}
-
 	@media screen and (min-width: 768px) {
 		.card {
 			flex-direction: row;
+
+			& .main {
+				& .offset {
+					margin-left: 4.5rem;
+					margin-top: -0.75rem;
+				}
+			}
 		}
 	}
 </style>
