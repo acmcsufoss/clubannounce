@@ -4,7 +4,7 @@
 
 <button>{content}</button>
 
-<style lang="scss">
+<style>
 	button {
 		outline: none;
 		border: none;
@@ -15,10 +15,10 @@
 		font-size: var(--size-xs);
 		background-color: var(--acm-darker);
 		color: var(--acm-light);
+	}
 
-		&:hover {
-			opacity: 0.7;
-		}
+	button:hover {
+		opacity: 0.7;
 	}
 
 	@media screen and (min-width: 768px) {

@@ -66,28 +66,27 @@
 	/>
 </div>
 
-<style lang="scss">
+<style>
 	.app {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		// width: fit-content;
+	}
 
-		& h2 {
-			font-size: 2rem;
-		}
+	.app h2 {
+		font-size: 2rem;
+	}
 
-		& main {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
+	.app main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
-			& .place-end {
-				place-items: right;
-			}
-		}
+	.app main .place-end {
+		place-items: right;
 	}
 
 	.subtitle {
@@ -106,11 +105,12 @@
 		background-color: var(--acm-darker);
 		color: var(--acm-light);
 		transition: all 0.2s ease-in;
-
-		&:hover {
-			opacity: 0.7;
-		}
 	}
+
+	.create:hover {
+		opacity: 0.7;
+	}
+
 	.full-window-overlay {
 		position: fixed;
 		top: 0;
@@ -122,10 +122,10 @@
 		transition: 0.25s;
 		opacity: 0;
 		visibility: hidden;
+	}
 
-		&.active {
-			opacity: 1;
-			visibility: visible;
-		}
+	.full-window-overlay.active {
+		opacity: 1;
+		visibility: visible;
 	}
 </style>

@@ -45,7 +45,7 @@
 	<!-- <div>Time</div> -->
 </div>
 
-<style lang="scss">
+<style>
 	.card {
 		display: flex;
 		flex-direction: column;
@@ -55,30 +55,32 @@
 		background-color: var(--acm-light-blue);
 		border-radius: 0.5rem;
 		margin-bottom: 1rem;
+	}
 
-		& h3 {
-			font-size: var(--size-md);
-		}
+	.card h3 {
+		font-size: var(--size-md);
+	}
 
-		& .header-wrapper {
-			display: grid;
-			grid-template-columns: 3.5rem 1fr;
-			align-items: center;
-			justify-content: start;
-			gap: 1rem;
-			& .logo {
-				width: 3.5rem;
-			}
-		}
+	.card .header-wrapper {
+		display: grid;
+		grid-template-columns: 3.5rem 1fr;
+		align-items: center;
+		justify-content: start;
+		gap: 1rem;
+	}
+
+	.card .header-wrapper .logo {
+		width: 3.5rem;
 	}
 
 	.event-info {
 		display: flex;
 		align-items: center;
-		& time,
-		& span {
-			font-weight: 600;
-		}
+	}
+
+	.event-info time,
+	.event-info span {
+		font-weight: 600;
 	}
 
 	p {
@@ -92,13 +94,11 @@
 	@media screen and (min-width: 768px) {
 		.card {
 			flex-direction: row;
+		}
 
-			& .main {
-				& .offset {
-					margin-left: 4.5rem;
-					margin-top: -0.75rem;
-				}
-			}
+		.card .main .offset {
+			margin-left: 4.5rem;
+			margin-top: -0.75rem;
 		}
 	}
 </style>
