@@ -23,7 +23,7 @@
 	</div>
 </section>
 
-<style lang="scss">
+<style>
 	section {
 		position: relative;
 		display: flex;
@@ -33,26 +33,25 @@
 		padding-inline: 0.5rem;
 		width: 100%;
 		background-color: var(--acm-light-blue);
+	}
+	section h1 {
+		text-align: center;
+		color: var(--acm-darker);
+		font-size: var(--size-lg);
+	}
 
-		& h1 {
-			text-align: center;
-			color: var(--acm-darker);
-			font-size: var(--size-lg);
-		}
+	section p {
+		width: min(80vw, 50ch);
+		color: var(--acm-darker);
+		font-size: var(--size-xs);
+		font-weight: 600;
+		text-align: center;
+	}
 
-		& p {
-			width: min(80vw, 50ch);
-			color: var(--acm-darker);
-			font-size: var(--size-xs);
-			font-weight: 600;
-			text-align: center;
-		}
-
-		& .buttons {
-			display: flex;
-			flex-direction: column;
-			gap: 1rem;
-		}
+	section .buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
 	}
 
 	.capy-emote {
@@ -64,10 +63,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
 
-		& img {
-			width: 75%;
-		}
+	.capy-emote img {
+		width: 75%;
 	}
 
 	.capy-emote-0 {
@@ -93,30 +92,29 @@
 		right: 3.5rem;
 		transform: rotate(-30deg);
 	}
+
 	@media screen and (min-width: 400px) {
-		section {
-			& .buttons {
-				flex-direction: row;
-			}
+		section .buttons {
+			flex-direction: row;
 		}
 	}
 
 	@media screen and (min-width: 768px) {
 		section {
 			padding: 3rem;
+		}
 
-			& h1 {
-				font-size: var(--size-xl);
-			}
+		section h1 {
+			font-size: var(--size-xl);
+		}
 
-			& p {
-				font-size: var(--size-sm);
-			}
+		section p {
+			font-size: var(--size-sm);
+		}
 
-			& .buttons {
-				flex-direction: row;
-				gap: 1.5rem;
-			}
+		section .buttons {
+			flex-direction: row;
+			gap: 1.5rem;
 		}
 	}
 </style>

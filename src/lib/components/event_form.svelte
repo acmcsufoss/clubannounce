@@ -84,7 +84,7 @@
 	</div>
 </form>
 
-<style lang="scss">
+<style>
 	.event-card {
 		z-index: 10;
 		position: fixed;
@@ -99,88 +99,87 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.125s ease-in;
+	}
 
-		&.active {
-			top: 50%;
-			opacity: 1;
-			visibility: visible;
-		}
+	.event-card.active {
+		top: 50%;
+		opacity: 1;
+		visibility: visible;
+	}
 
-		& .row {
-			display: flex;
-			column-gap: 2rem;
+	.event-card .row {
+		display: flex;
+		column-gap: 2rem;
+	}
 
-			&.place-end {
-				justify-self: end;
-			}
+	.event-card .row.place-end {
+		justify-self: end;
+	}
 
-			& .element-column {
-				width: 100%;
-			}
-		}
+	.event-card .row .element-column {
+		width: 100%;
+	}
 
-		& .mg-bottom {
-			margin-block-end: 1rem;
-		}
+	.event-card .mg-bottom {
+		margin-block-end: 1rem;
+	}
 
-		& h2 {
-			margin-block: 0;
-			font-size: 1.75rem;
-		}
+	.event-card h2 {
+		margin-block: 0;
+		font-size: 1.75rem;
+	}
 
-		& input[type='date'],
-		input[type='time'] {
-			background-color: var(--acm-canvas);
-			font-size: 1rem;
-			padding: 0.5rem 1rem;
-			outline: none;
-			border: none;
-			text-align: right;
-			width: 100%;
-		}
+	.event-card input[type='date'],
+	.event-card input[type='time'] {
+		background-color: var(--acm-canvas);
+		font-size: 1rem;
+		padding: 0.5rem 1rem;
+		outline: none;
+		border: none;
+		text-align: right;
+		width: 100%;
+	}
 
-		& textarea {
-			width: 100%;
-			height: 10rem;
-			resize: none;
-		}
+	.event-card textarea {
+		width: 100%;
+		height: 10rem;
+		resize: none;
+	}
 
-		& input[type='text'],
-		textarea {
-			background-color: var(--acm-canvas);
-			font-size: 1rem;
-			padding: 0.5rem 1rem;
-			outline: none;
-			border: none;
-			width: 100%;
-			// text-align: left;
-		}
+	.event-card input[type='text'],
+	.event-card textarea {
+		background-color: var(--acm-canvas);
+		font-size: 1rem;
+		padding: 0.5rem 1rem;
+		outline: none;
+		border: none;
+		width: 100%;
+	}
 
-		.save-event,
-		.create-event {
-			outline: none;
-			border: none;
-			cursor: pointer;
-			border-radius: 0.5rem;
-			font-size: 1rem;
-		}
+	.event-card .save-event,
+	.event-card .create-event {
+		outline: none;
+		border: none;
+		cursor: pointer;
+		border-radius: 0.5rem;
+		font-size: 1rem;
+	}
 
-		.save-event {
-			padding: 0.75rem;
-			background-color: transparent;
-			color: var(--acm-darker);
-		}
+	.event-card .save-event {
+		padding: 0.75rem;
+		background-color: transparent;
+		color: var(--acm-darker);
+	}
 
-		.create-event {
-			padding: 0.75rem 1.5rem;
-			background-color: (var(--acm-darker));
-			color: var(--acm-light);
-			transition: all 0.2s ease-in;
+	.event-card .create-event {
+		padding: 0.75rem 1.5rem;
+		background-color: var(--acm-darker);
+		color: var(--acm-light);
+		transition: all 0.2s ease-in;
+	}
 
-			&:hover {
-				opacity: 0.7;
-			}
-		}
+	.event-card .create-event:hover {
+		opacity: 0.7;
 	}
 
 	.limit-exceeded {
@@ -199,11 +198,14 @@
 		width: 100%;
 		padding: 0.5rem 1rem;
 		background-color: rgb(215, 215, 215);
-		transition: opacity 0.25s;
+	}
 
-		& :hover {
-			opacity: 0.5;
-		}
+	.team-options > * {
+		transition: opacity 0.125s ease;
+	}
+
+	.team-options :hover {
+		opacity: 0.5;
 	}
 
 	.team-options-open {

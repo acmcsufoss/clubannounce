@@ -40,7 +40,7 @@
 	{/if}
 </form>
 
-<style lang="scss">
+<style>
 	.announcement-card {
 		z-index: 10;
 		position: fixed;
@@ -55,67 +55,67 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.125s ease-in;
+	}
 
-		&.active {
-			top: 50%;
-			opacity: 1;
-			visibility: visible;
-		}
+	.announcement-card.active {
+		top: 50%;
+		opacity: 1;
+		visibility: visible;
+	}
 
-		& .place-end {
-			justify-self: end;
-		}
+	.announcement-card .place-end {
+		justify-self: end;
+	}
 
-		& .mg-bottom {
-			margin-block-end: 1rem;
-		}
+	.announcement-card .mg-bottom {
+		margin-block-end: 1rem;
+	}
 
-		& h2 {
-			margin-block: 0;
-			font-size: 1.75rem;
-		}
+	.announcement-card h2 {
+		margin-block: 0;
+		font-size: 1.75rem;
+	}
 
-		& textarea {
-			width: 100%;
-			height: 10rem;
-			resize: none;
-		}
+	.announcement-card textarea {
+		width: 100%;
+		height: 10rem;
+		resize: none;
+	}
 
-		& input[type='text'],
-		textarea {
-			background-color: var(--acm-canvas);
-			font-size: 1rem;
-			padding: 0.5rem 1rem;
-			outline: none;
-			border: none;
-			width: 100%;
-		}
+	.announcement-card input[type='text'],
+	.announcement-card textarea {
+		background-color: var(--acm-canvas);
+		font-size: 1rem;
+		padding: 0.5rem 1rem;
+		outline: none;
+		border: none;
+		width: 100%;
+	}
 
-		.save,
-		.create {
-			outline: none;
-			border: none;
-			cursor: pointer;
-			font-size: 1rem;
-			border-radius: 0.5rem;
-		}
+	.announcement-card .save,
+	.announcement-card .create {
+		outline: none;
+		border: none;
+		cursor: pointer;
+		font-size: 1rem;
+		border-radius: 0.5rem;
+	}
 
-		.save {
-			padding: 0.75rem;
-			background-color: transparent;
-			color: rgb(var(--acm-general-rgb));
-		}
+	.announcement-card .save {
+		padding: 0.75rem;
+		background-color: transparent;
+		color: rgb(var(--acm-general-rgb));
+	}
 
-		.create {
-			padding: 0.75rem 1.5rem;
-			background-color: rgb(var(--acm-general-rgb));
-			color: var(--acm-light);
-			transition: all 0.2s ease-in;
+	.announcement-card .create {
+		padding: 0.75rem 1.5rem;
+		background-color: rgb(var(--acm-general-rgb));
+		color: var(--acm-light);
+		transition: all 0.2s ease-in;
+	}
 
-			&:hover {
-				opacity: 0.7;
-			}
-		}
+	.announcement-card .create:hover {
+		opacity: 0.7;
 	}
 
 	.limit-exceeded {
