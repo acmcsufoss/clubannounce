@@ -8,7 +8,14 @@
 	let startTime: Date;
 	let endTime: Date;
 
+	let isTeamSelectionOpen = false;
+
 	const CHAR_LIMIT = 100;
+	const teams: string[] = ['AI', 'Algo', 'Design', 'Dev', 'Game Dev', 'General', 'ICPC', 'OSS'];
+
+	const selectTeam = (team: string) => {
+		data.team = team;
+	};
 
 	$: characterCount = data.content.length;
 </script>
@@ -17,9 +24,20 @@
 	<h2 class="mg-bottom">Create a New Event</h2>
 
 	<div class="row">
-		<div class="element-column">
+		<div class="element-column team-selection">
 			<label for="team">Choose Team Option*</label>
-			<input type="text" name="team" bind:value={data.team} />
+			<div class="team-options" class:team-options-open={isTeamSelectionOpen}>
+				{#each teams as team}
+					<span on:focus={() => selectTeam(team)}>{team}</span>
+				{/each}
+			</div>
+			<input
+				type="text"
+				name="team"
+				bind:value={data.team}
+				on:focus={() => (isTeamSelectionOpen = !isTeamSelectionOpen)}
+				on:blur={() => (isTeamSelectionOpen = false)}
+			/>
 		</div>
 
 		<div class="element-column">
@@ -150,12 +168,12 @@
 		.save-event {
 			padding: 0.75rem;
 			background-color: transparent;
-			color: rgb(var(--acm-general-rgb));
+			color: var(--acm-darker);
 		}
 
 		.create-event {
 			padding: 0.75rem 1.5rem;
-			background-color: rgb(var(--acm-general-rgb));
+			background-color: (var(--acm-darker));
 			color: var(--acm-light);
 			transition: all 0.2s ease-in;
 
@@ -167,5 +185,28 @@
 
 	.limit-exceeded {
 		color: var(--acm-red);
+	}
+
+	.team-selection {
+		position: relative;
+	}
+
+	.team-options {
+		cursor: pointer;
+		position: absolute;
+		display: none;
+		flex-direction: column;
+		width: 100%;
+		padding: 0.5rem 1rem;
+		background-color: rgb(215, 215, 215);
+		transition: opacity 0.25s;
+
+		& :hover {
+			opacity: 0.5;
+		}
+	}
+
+	.team-options-open {
+		display: flex;
 	}
 </style>
